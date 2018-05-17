@@ -16,11 +16,14 @@ jobs:
 
     working_directory: ~/repo
     
-   deployment:
-    s3up:
-    branch: develop
-    commands:
-      - s3deploy -source=dist/ -region=us-west-2 -bucket=circleciwar
+    dependencies:
+      override:
+        - sudo pip install awscli
+    deployment:
+      prod:
+        branch: master
+        commands:
+        - aws s3 sync /TestProject s3://circleciawar --delete
     
     environment:
       # Customize the JVM maximum heap limit
