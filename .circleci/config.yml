@@ -23,7 +23,7 @@ jobs:
       prod:
         branch: master
         commands:
-        - aws s3 sync /TestProject s3://circleciawar --delete
+        - aws s3 sync /TestProject s3://circleciwar --delete
     
     environment:
       # Customize the JVM maximum heap limit
