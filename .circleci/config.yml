@@ -40,7 +40,9 @@ jobs:
         
       # run tests!
      # - run: gradle test
-     test:
-        override:
-          - mkdir -p $CIRCLE_TEST_REPORTS/cucumber
-          - bundle exec cucumber --format junit --out $CIRCLE_TEST_REPORTS/cucumber/junit.xml
+       - run: |
+          mkdir -p ~/repo/junit/
+          find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} ~/repo/junit/ \;
+
+       - store_test_results:
+          path: ~/repo/junit
