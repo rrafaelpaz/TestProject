@@ -23,19 +23,12 @@ jobs:
       prod:
         branch: master
           commands:
-            - aws s3 sync /TestProject s3://circleciawar --delete
+            - aws s3 sync TestProject s3://circleciawar --delete
 
     environment:
       # Customize the JVM maximum heap limit
       JVM_OPTS: -Xmx3200m
       TERM: dumb
-      
-    general:
-      artifacts:
-        - "target/java-demo.war"
-    test:
-      post:
-        - mvn clean install
     
     steps:
       - checkout
