@@ -42,7 +42,7 @@ jobs:
       - run: gradle test
       
       deployment:
-        production: # just a label; label names are completely up to you
+        production: marWarFile
           branch: master
           commands:
             - ./deploy-to-production.sh
