@@ -40,3 +40,13 @@ jobs:
         
       # run tests!
       - run: gradle test
+      
+      deployment:
+        production: # just a label; label names are completely up to you
+          branch: master
+          commands:
+            - ./deploy-to-production.sh
+     staging:
+        branch: staging
+          commands:
+            - ./deploy-to-staging.sh
