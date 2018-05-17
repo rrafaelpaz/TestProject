@@ -39,10 +39,5 @@ jobs:
           key: v1-dependencies-{{ checksum "build.gradle" }}
         
       # run tests!
-     # - run: gradle test
-       - run: |
-          mkdir -p ~/repo/junit/
-          find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} ~/repo/junit/ \;
-
-       - store_test_results:
-          path: ~/repo/junit
+       - run: gradle test
+      
