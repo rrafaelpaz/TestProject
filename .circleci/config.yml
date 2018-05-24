@@ -1,51 +1,35 @@
-# Java Gradle CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-java/ for more details
-#
-version: 2
-jobs:
-  build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/openjdk:8-jdk
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-
-    working_directory: ~/repo
-    
-    dependencies:
-      override:
-        - sudo pip install awscli
-    deployment:
-      prod:
+--- 
+jobs: 
+  build: 
+    dependencies: 
+      override: 
+        - "sudo pip install awscli"
+    deployment: 
+      prod: 
         branch: master
-        commands:
-        - aws s3 sync /TestProject s3://circleciwar --delete
-    
-    environment:
-      # Customize the JVM maximum heap limit
-      JVM_OPTS: -Xmx3200m
+        commands: 
+          - "aws s3 sync /TestProject s3://circleciwar --delete"
+    docker: 
+      - 
+        image: "circleci/openjdk:8-jdk"
+    environment: 
+      JVM_OPTS: "-Xmx3200m"
       TERM: dumb
-    
-    steps:
+    steps: 
       - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "build.gradle" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run: gradle dependencies
-
-      - save_cache:
-          paths:
+      - 
+        restore_cache: 
+          keys: 
+            - "v1-dependencies-{{ checksum \"build.gradle\" }}"
+            - v1-dependencies-
+      - 
+        run: "gradle dependencies"
+      - 
+        save_cache: 
+          key: "v1-dependencies-{{ checksum \"build.gradle\" }}"
+          paths: 
             - ~/.gradle
-          key: v1-dependencies-{{ checksum "build.gradle" }}
-        
-      # run tests!
-      - run: gradle test
+      - 
+        run: "gradle test"
+    working_directory: ~/repo
+version: 2
