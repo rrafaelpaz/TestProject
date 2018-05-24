@@ -16,19 +16,16 @@ jobs:
             - v1-dependencies-
       - 
         run: "gradle dependencies"
-        
-      - run:
-          name: run tests
-          command: |
-            set -e
-            source venv/bin/activate
-            python manage.py test
       - 
         save_cache: 
           key: "v1-dependencies-{{ checksum \"build.gradle\" }}"
           paths: 
             - ~/.gradle
       - 
-        run: "gradle test"
+        run: "gradle dependencies"
+      - 
+        run: 
+          command: "gradle lint test"
+          name: "Run Tests"
     working_directory: ~/repo
 version: 2
