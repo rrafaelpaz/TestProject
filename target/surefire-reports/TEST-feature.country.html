@@ -152,32 +152,32 @@
 <div class="scenario-steps">
 <div class="step-row">
 <div class="step-cell passed">* def country = 'USA'</div>
-<div class="time-cell passed">0.133731</div>
+<div class="time-cell passed">0.145088</div>
 </div>
-<div class="preformatted">13:18:32.552 ERROR - could not find or read file: karate-config.js, prefix: CLASSPATH
-13:18:32.556 WARN  - skipping bootstrap configuration: could not find or read file: karate-config.js, prefix: CLASSPATH
+<div class="preformatted">12:28:06.951 ERROR - could not find or read file: karate-config.js, prefix: CLASSPATH
+12:28:06.955 WARN  - skipping bootstrap configuration: could not find or read file: karate-config.js, prefix: CLASSPATH
 </div>
 <div class="step-row">
 <div class="step-cell passed">Given url 'http://services.groupkt.com/state/get/'+country+'/all'</div>
-<div class="time-cell passed">0.007358</div>
+<div class="time-cell passed">0.008868</div>
 </div>
 <div class="step-row">
 <div class="step-cell passed">When method GET</div>
-<div class="time-cell passed">1.488495</div>
+<div class="time-cell passed">1.055123</div>
 </div>
-<div class="preformatted">13:18:33.048 DEBUG - 
+<div class="preformatted">12:28:07.376 DEBUG - 
 1 &gt; GET http://services.groupkt.com/state/get/USA/all
 1 &gt; Accept-Encoding: gzip,deflate
 1 &gt; Connection: Keep-Alive
 1 &gt; Host: services.groupkt.com
 1 &gt; User-Agent: Apache-HttpClient/4.5.4 (Java/1.8.0_101)
 
-13:18:34.112 DEBUG - 
+12:28:08.108 DEBUG - 
 1 &lt; 200
 1 &lt; Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 1 &lt; Connection: Keep-Alive
 1 &lt; Content-Type: application/json;charset=UTF-8
-1 &lt; Date: Thu, 17 May 2018 03:18:33 GMT
+1 &lt; Date: Thu, 24 May 2018 02:28:07 GMT
 1 &lt; Expires: 0
 1 &lt; Keep-Alive: timeout=5, max=100
 1 &lt; Pragma: no-cache
@@ -628,21 +628,25 @@
   }
 }
 
-13:18:34.117 DEBUG - response time in milliseconds: 1396
+12:28:08.109 DEBUG - response time in milliseconds: 971
 </div>
 <div class="step-row">
 <div class="step-cell passed">Then status 200</div>
-<div class="time-cell passed">0.000732</div>
+<div class="time-cell passed">0.00193</div>
 </div>
 <div class="step-row">
-<div class="step-cell passed">* def countryInfo = response.RestResponse.result[0]</div>
-<div class="time-cell passed">0.103742</div>
+<div class="step-cell passed">* def response = response.RestResponse.result[0]</div>
+<div class="time-cell passed">0.050826</div>
 </div>
 <div class="step-row">
-<div class="step-cell passed">* print 'Country name: '+ countryInfo.country +  ' State: '+ countryInfo.name + ' Capital: '+ countryInfo.capital</div>
-<div class="time-cell passed">0.017331</div>
+<div class="step-cell passed">* print 'this is the first object in the result ' + response.name</div>
+<div class="time-cell passed">0.005897</div>
 </div>
-<div class="preformatted">13:18:34.322 INFO  - [print] Country name: USA State: Alabama Capital: Montgomery
+<div class="preformatted">12:28:08.237 INFO  - [print] this is the first object in the result Alabama
+</div>
+<div class="step-row">
+<div class="step-cell passed">And match response.name == 'Alabama'</div>
+<div class="time-cell passed">0.003532</div>
 </div>
 </div>
 </div>
