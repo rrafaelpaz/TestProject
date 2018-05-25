@@ -43,7 +43,7 @@
   .sidenav .svgHolder { width: 100px; height: 100px; }
 </style>
 
-<title>feature/country.feature</title>
+<title>com/test/estado/country.feature</title>
 <script>window.onload = function() {
   possibleModes = ['failed', 'skipped', 'passed'];
   tests = {};
@@ -152,32 +152,32 @@
 <div class="scenario-steps">
 <div class="step-row">
 <div class="step-cell passed">* def country = 'USA'</div>
-<div class="time-cell passed">0.100379</div>
+<div class="time-cell passed">0.140274</div>
 </div>
-<div class="preformatted">20:15:58.806 ERROR - could not find or read file: karate-config.js, prefix: CLASSPATH
-20:15:58.810 WARN  - skipping bootstrap configuration: could not find or read file: karate-config.js, prefix: CLASSPATH
+<div class="preformatted">08:12:26.271 ERROR - could not find or read file: karate-config.js, prefix: CLASSPATH
+08:12:26.276 WARN  - skipping bootstrap configuration: could not find or read file: karate-config.js, prefix: CLASSPATH
 </div>
 <div class="step-row">
 <div class="step-cell passed">Given url 'http://services.groupkt.com/state/get/'+country+'/all'</div>
-<div class="time-cell passed">0.008748</div>
+<div class="time-cell passed">0.005926</div>
 </div>
 <div class="step-row">
 <div class="step-cell passed">When method GET</div>
-<div class="time-cell passed">0.939778</div>
+<div class="time-cell passed">2.144686</div>
 </div>
-<div class="preformatted">20:15:59.224 DEBUG - 
+<div class="preformatted">08:12:26.739 DEBUG - 
 1 &gt; GET http://services.groupkt.com/state/get/USA/all
 1 &gt; Accept-Encoding: gzip,deflate
 1 &gt; Connection: Keep-Alive
 1 &gt; Host: services.groupkt.com
 1 &gt; User-Agent: Apache-HttpClient/4.5.4 (Java/1.8.0_101)
 
-20:15:59.836 DEBUG - 
+08:12:28.508 DEBUG - 
 1 &lt; 200
 1 &lt; Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 1 &lt; Connection: Keep-Alive
 1 &lt; Content-Type: application/json;charset=UTF-8
-1 &lt; Date: Thu, 24 May 2018 10:15:59 GMT
+1 &lt; Date: Fri, 25 May 2018 22:12:28 GMT
 1 &lt; Expires: 0
 1 &lt; Keep-Alive: timeout=5, max=100
 1 &lt; Pragma: no-cache
@@ -628,25 +628,27 @@
   }
 }
 
-20:15:59.838 DEBUG - response time in milliseconds: 886
+08:12:28.513 DEBUG - response time in milliseconds: 2067
 </div>
 <div class="step-row">
 <div class="step-cell passed">Then status 200</div>
-<div class="time-cell passed">0.000962</div>
+<div class="time-cell passed">0.000849</div>
 </div>
 <div class="step-row">
 <div class="step-cell passed">* def response = response.RestResponse.result[0]</div>
-<div class="time-cell passed">0.057287</div>
+<div class="time-cell passed">0.03796</div>
 </div>
 <div class="step-row">
 <div class="step-cell passed">* print 'this is the first object in the result ' + response.name</div>
-<div class="time-cell passed">0.005248</div>
+<div class="time-cell passed">0.004984</div>
 </div>
-<div class="preformatted">20:15:59.939 INFO  - [print] this is the first object in the result Alabama
+<div class="preformatted">08:12:28.623 INFO  - [print] this is the first object in the result Alabama
 </div>
 <div class="step-row">
-<div class="step-cell passed">And match response.name == 'Alabama'</div>
-<div class="time-cell passed">0.003501</div>
+<div class="step-cell failed">And match response.name == 'Alabama2'</div>
+<div class="time-cell failed">0.007759</div>
+</div>
+<div class="preformatted">08:12:28.631 ERROR - assertion failed: path: $.name, actual: 'Alabama', expected: 'Alabama2', reason: not equal
 </div>
 </div>
 </div>
