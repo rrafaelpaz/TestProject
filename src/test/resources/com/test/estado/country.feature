@@ -12,6 +12,6 @@ Then status 200
 
 * print 'this is the first object in the result ' + response.name
 
-And match response.name == 'Alabama2'
+And match response.name == 'Alabama'
 
 
