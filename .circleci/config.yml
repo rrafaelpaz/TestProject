@@ -26,6 +26,6 @@ jobs:
       - 
         run: 
           command: "gradle init test"
-          name: "Run Tests"
+          name: "Run Tests 2"
     working_directory: ~/repo
 version: 2
